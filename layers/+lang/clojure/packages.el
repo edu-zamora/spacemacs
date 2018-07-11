@@ -9,6 +9,7 @@
     eldoc
     ggtags
     helm-gtags
+    paredit
     popwin
     smartparens
     subword
@@ -277,6 +278,13 @@
             (if dotspacemacs-smartparens-strict-mode
                 #'smartparens-strict-mode
               #'smartparens-mode)))
+
+(defun clojure/init-paredit ()
+  (use-package paredit
+    :ensure t
+    :defer t
+    :init
+    (add-hook 'clojure-mode-hook 'paredit-mode)))
 
 (defun clojure/post-init-subword ()
   (add-hook 'cider-mode-hook 'subword-mode))
